@@ -7,4 +7,7 @@ output:
     highlight: haddock
     theme: cerulean
 ---
+## Creates a title
+**bold**
+*italics*
 Initial website for GitHub project.
