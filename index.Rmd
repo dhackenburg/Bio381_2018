@@ -11,7 +11,7 @@ output:
 
 <img src="Diana_pinecone.jpg" align="left" hspace="5"  width="230" height="140" />
 My name is Diana Hackenburg and I am a PhD student in the Rubenstein School at the University of Vermont. I study the connections between human well-being and nature, as well as communication, education and community action related to the environment, specifically algal blooms.
-[Check out my other website.](dianahackenburg.wordpress.com)
+[Check out my other website.](https://dianahackenburg.wordpress.com)
 
 
 
