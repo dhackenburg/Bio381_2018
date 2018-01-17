@@ -3,11 +3,12 @@ title: "Bio 381"
 author: "Diana Hackenburg"
 date: "January 17, 2018"
 output: 
-  html_document: 
-    highlight: haddock
-    theme: cerulean
+  prettydoc::html_pretty:
+    theme: Cayman
+    highlight: github
 ---
-## Creates a title
-**bold**
-*italics*
-Initial website for GitHub project.
+## Welcome to my GitHub project website.
+
+<img src="Diana_pinecone.jpg" align="left" hspace="5"  width="300" height="190" />
+My name is Diana Hackenburg and I am a PhD student in the Rubenstein School at the University of Vermont. I study the connections between human well-being and nature, as well as communication, education and community action related to the environment, specifically algal blooms.
+[Check out my other website.](dianahackenburg.wordpress.com)
