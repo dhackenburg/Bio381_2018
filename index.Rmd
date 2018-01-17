@@ -2,5 +2,9 @@
 title: "Bio 381"
 author: "Diana Hackenburg"
 date: "January 17, 2018"
-output: html_document
+output: 
+  html_document: 
+    highlight: haddock
+    theme: cerulean
 ---
+Initial website for GitHub project.
