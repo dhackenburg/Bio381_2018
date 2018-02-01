@@ -19,6 +19,7 @@ My name is Diana Hackenburg and I am a PhD student in the Rubenstein School at t
 
 #Homework
 * [Homework 2](Homework2_Flowchart.html)
+* [Homework 3](Homework3a.pdf)
 
 
 
