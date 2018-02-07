@@ -4,7 +4,6 @@ author: "Diana Hackenburg"
 date: "February 7, 2018"
 output: html_document
 ---
-## Homework 4
 1.Suppose x = 1.1, a = 2.2, and b = 3.3. Assign each expression to the value of the variable z and print the value stored in z.
 
 
@@ -51,7 +50,7 @@ print(c)
 z<-runif(2)
 print(z)
 # r = (x^2+y^2)^(1/2)
-# \theta = arctan(y/x)
+# theta = arctan(y/x)
 r<-(z[1]^2+z[2]^2)^(1/2)
 theta<-(atan(z[2]/z[1]))
 polarcoords<-c(r,theta)

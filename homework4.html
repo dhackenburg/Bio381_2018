@@ -125,8 +125,6 @@ $(document).ready(function () {
 </div>
 
 
-<div id="homework-4" class="section level2">
-<h2>Homework 4</h2>
 <p>1.Suppose x = 1.1, a = 2.2, and b = 3.3. Assign each expression to the value of the variable z and print the value stored in z.</p>
 <pre class="r"><code>x&lt;-1.1
 a&lt;-2.2
@@ -173,14 +171,14 @@ print(c)</code></pre>
 </ol>
 <pre class="r"><code>z&lt;-runif(2)
 print(z)</code></pre>
-<pre><code>## [1] 0.2260132 0.4143068</code></pre>
+<pre><code>## [1] 0.1709078 0.8439267</code></pre>
 <pre class="r"><code># r = (x^2+y^2)^(1/2)
-# \theta = arctan(y/x)
+# theta = arctan(y/x)
 r&lt;-(z[1]^2+z[2]^2)^(1/2)
 theta&lt;-(atan(z[2]/z[1]))
 polarcoords&lt;-c(r,theta)
 print(polarcoords)</code></pre>
-<pre><code>## [1] 0.471945 1.071398</code></pre>
+<pre><code>## [1] 0.8610585 1.3709837</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>Suppose that queue &lt;- c(“sheep”, “fox”, “owl”, “ant”) and that queue represents the animals that are lined up to enter Noah’s Ark, with the sheep at the front of the line. Using R expressions, update the queue successively as</li>
 </ol>
@@ -232,7 +230,7 @@ v[!v%%2==0 &amp; !v%%3==0 &amp; !v%%7==0]</code></pre>
 
 proportion&lt;-c(mean(z&lt;0.10),mean(z&gt;0.90),mean(z&gt;0.45 &amp; z&lt;0.55))
 print(proportion)</code></pre>
-<pre><code>## [1] 0.117 0.119 0.111</code></pre>
+<pre><code>## [1] 0.095 0.098 0.100</code></pre>
 <pre class="r"><code># b.Making successive copies of z, transform your vector of uniform numbers in the following ways &amp;  for each case calculate your vector of 3 numbers to get the new proportions.
 set.seed(1)  
 #log (base 10) of z
@@ -244,18 +242,17 @@ print(proportion)</code></pre>
 zsquare&lt;-z^2
 proportion&lt;-c(mean(zsquare&lt;0.10),mean(zsquare&gt;0.90),mean(zsquare&gt;0.45 &amp; z&lt;0.55))
 print(proportion)</code></pre>
-<pre><code>## [1] 0.308 0.070 0.000</code></pre>
+<pre><code>## [1] 0.303 0.053 0.000</code></pre>
 <pre class="r"><code>#e^z
 expz&lt;-exp(z)
 proportion&lt;-c(mean(expz&lt;0.10),mean(expz&gt;0.90),mean(expz&gt;0.45 &amp; z&lt;0.55))
 print(proportion)</code></pre>
-<pre><code>## [1] 0.000 1.000 0.527</code></pre>
+<pre><code>## [1] 0.000 1.000 0.528</code></pre>
 <pre class="r"><code>#square root of z
 sqrtz&lt;-sqrt(z)
 proportion&lt;-c(mean(sqrtz&lt;0.10),mean(sqrtz&gt;0.90),mean(sqrtz&gt;0.45 &amp; z&lt;0.55))
 print(proportion)</code></pre>
-<pre><code>## [1] 0.011 0.204 0.319</code></pre>
-</div>
+<pre><code>## [1] 0.013 0.200 0.341</code></pre>
 
 
 
