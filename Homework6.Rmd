@@ -1,0 +1,114 @@
+---
+title: "Homework 6"
+author: "Diana Hackenburg"
+date: "February 21, 2018"
+output: html_document
+---
+#Open Libraries
+```{r}
+library(ggplot2) # for graphics
+library(MASS) # for maximum likelihood estimation
+```
+#Generate my data
+```{r}
+z<-read.table("MyDataFile_Homework6.csv",header=TRUE,sep=",", stringsAsFactors=FALSE)
+str(z)
+summary(z)
+```
+#Plot Histogram of Data
+```{r}
+p1 <- ggplot(data=z, aes(x=personal, y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2) 
+print(p1)
+```
+#Add empirical density curve
+```{r}
+p1 <-  p1 +  geom_density(linetype="dotted",size=0.75)
+print(p1)
+```
+#Get maximum likelihood parameters for `normal`
+```{r}
+normPars <- fitdistr(z$personal,"normal")
+print(normPars)
+str(normPars)
+normPars$estimate["mean"] # note structure of getting a named attribute
+```
+#Plot normal probability density
+```{r}
+meanML <- normPars$estimate["mean"]
+sdML <- normPars$estimate["sd"]
+xval <- seq(0,max(z$personal),len=length(z$personal))
+stat <- stat_function(aes(x = xval, y = ..y..), fun = dnorm, colour="red", n = length(z$personal), args = list(mean = meanML, sd = sdML))
+p1 + stat
+``` 
+# Plot `exponential` probability density
+```{r}
+expoPars <- fitdistr(z$personal,"exponential")
+rateML <- expoPars$estimate["rate"]
+stat2 <- stat_function(aes(x = xval, y = ..y..), fun = dexp, colour="blue", n = length(z$personal), args = list(rate=rateML))
+p1 + stat + stat2
+```
+#Plot `uniform` probability density
+```{r}
+stat3 <- stat_function(aes(x = xval, y = ..y..), fun = dunif, colour="darkgreen", n = length(z$personal), args = list(min=min(z$personal), max=max(z$personal)))
+ p1 + stat + stat2 + stat3
+```
+#Plot `gamma` probability density
+```{r}
+gammaPars <- fitdistr(z$personal,"gamma")
+shapeML <- gammaPars$estimate["shape"]
+rateML <- gammaPars$estimate["rate"]
+
+stat4 <- stat_function(aes(x = xval, y = ..y..), fun = dgamma, colour="goldenrod", n = length(z$personal), args = list(shape=shapeML, rate=rateML))
+ p1 + stat + stat2 + stat3 + stat4
+```
+
+# Plot `beta` probability density
+```{r}
+pSpecial <- ggplot(data=z, aes(x=personal/(max(personal + 0.1)), y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2) + 
+  xlim(c(0,1)) +
+  geom_density(size=0.75,linetype="dotted")
+
+betaPars <- fitdistr(x=z$personal/max(z$personal + 0.1),start=list(shape1=1,shape2=2),"beta")
+shape1ML <- betaPars$estimate["shape1"]
+shape2ML <- betaPars$estimate["shape2"]
+
+statSpecial <- stat_function(aes(x = xval, y = ..y..), fun = dbeta, colour="orchid", n = length(z$personal), args = list(shape1=shape1ML,shape2=shape2ML))
+pSpecial + statSpecial
+```
+
+#Log Likelihood of Disributions - high log likelihoods are 'best'
+```{r}
+normPars$loglik
+gammaPars$loglik
+expoPars$loglik
+```
+
+#Gamma wins!
+
+#Simulate Data
+```{r}
+shapeML
+rateML
+zSim<-rgamma(n=4545,shape=70.05221,rate=1.910506)
+zSimDF<-as.data.frame(zSim)
+head(zSimDF)
+pSim <- ggplot(data=zSimDF, aes(x=zSim, y=..density..)) + geom_histogram(color="grey60",fill="cornsilk",size=0.2) 
+print(pSim)
+```
+
+#Simulated data with gamma probability density curve
+```{r}
+pSim + stat4
+```
+
+#Original data with gamma probability density curve
+```{r}
+p1 <- ggplot(data=z, aes(x=personal, y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2) 
+p1 + stat4
+```
+
+##How do the two histogram profiles compare? Do you think the model is doing a good job of simulating realistic data that match your original measurements? Why or why not?
+The two histogram profiles are somewhat comparable. The model underestimates the density of values around the mean and doesn't do a good job of simulating the  skewed-right distribution of the original data.
