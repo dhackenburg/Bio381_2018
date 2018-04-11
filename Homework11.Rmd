@@ -11,26 +11,23 @@ library(ggplot2)
 library(TeachingDemos)
 char2seed("Cruel April")
 ```
+#Function plotting and randomization tests
 
-########################################################
+##Setting up the functions
+```{r}
 # FUNCTION: readData
 # read in or generate data frame 
 # input: file name (or nothing for demo) 
 # output: 3-column data frame of observed data (ID, x, y)
 #------------------------------------------------------
-```{r}
 readData <- function(z=NULL) {
   if(is.null(z)) {
     xVar <- sample(1:5,100,replace=TRUE)
     yVar <- sample(1:5,100,replace=TRUE)
     dF <- data.frame(ID=seq_along(xVar), xVar, yVar)
-    
+  } 
     return(dF)
-    
   }
-}
-readData()
-```
 
 ########################################################
 # FUNCTION: getMetric
@@ -38,7 +35,6 @@ readData()
 # input: 3-column data frame for regression
 # output: regression slope (single number from randomization test notes)
 #------------------------------------------------------
-```{r}
 getMetric <- function(z=NULL) {
   if(is.null(z)){
     xVar <- sample(1:5,100,replace=TRUE)
@@ -51,8 +47,6 @@ getMetric <- function(z=NULL) {
   slope <- . 
   return(slope) 
 }
-getMetric()
-```
 
 ########################################################
 # FUNCTION: shuffleData
@@ -60,7 +54,6 @@ getMetric()
 # input: 3-column data frame (ID, xVar, yVar)
 # output: 3-column data frame (ID, xVar, yVar) (just shuffled up!)
 #------------------------------------------------------
-```{r}
 shuffleData <- function(z=NULL) {
   if(is.null(z)){
     xVar <- sample(1:5,100,replace=TRUE)
@@ -73,8 +66,6 @@ shuffleData <- function(z=NULL) {
   
   return(z)
 }
-shuffleData()
-```
 
 ########################################################
 # FUNCTION: getPVAL
@@ -82,7 +73,6 @@ shuffleData()
 # input: list of observed metric and vector of simulated metric
 # output: lower, upper tail probability vector 
 #------------------------------------------------------
-```{r}
 getPVAL <- function(z=NULL) {
   if(is.null(z)){
     z <- list(xObs=runif(1), xSim=runif(1000)) }
@@ -91,8 +81,6 @@ getPVAL <- function(z=NULL) {
   
   return(c(pL=pLower,pU=pUpper))
 }
-getPVAL()
-```
 
 ######################################
 # FUNCTION: plotRanTest
@@ -100,7 +88,6 @@ getPVAL()
 # input: list of observed metric and vector of simulated metric
 # output: ggplot graph
 #-------------------------------------
-```{r}
 plotRanTest <-function(z=NULL){
   if(is.null(z)){
     z <- list(xObs=runif(1),xSim=runif(1000)) }
@@ -108,11 +95,10 @@ plotRanTest <-function(z=NULL){
   p1 <- ggplot(data=dF,mapping=aes(x=simX))
   p1 + geom_histogram(mapping=aes(fill=I("goldenrod"),color=I("black"))) + geom_vline(aes(xintercept=z[[1]],color="blue"))
 }
-plotRanTest()
+
 ```
 
-#---------------------------------------------------
-# main body of code 
+##Main Body of Code
 ```{r}
 nSim <- 1000 # number of simulations 
 Xsim <- rep(NA, nSim) # will hold simulated slopes 
@@ -128,23 +114,19 @@ for (i in seq_len(nSim)){
 # creating the list structure that we need for final function
 slopes <- list(Xobs, Xsim)
 getPVAL(slopes)
-
-
-
 plotRanTest(slopes)
+```
 
-#--------------
-# Real Data!
+# Randomization Test with Real Data
+Here, I am applying the randomization test to survey data looking at people's concern for the environment related to their intentions to do pro-environmental behaviors. 
+```{r}
 # Read CSV into R
-MyData <- read.csv(file="Homework11data.csv", header=TRUE, sep=",")  
+MyData <- read.csv(file="Concern_behavior.csv", header=TRUE, sep=",")  
 head(MyData)
-dF <- data.frame(ID=seq_along(MyData),MyData)
-getMetric(dF)
-getMetric()
+dF<-cbind(ID=seq_along(MyData),MyData)
+Xobs <- getMetric(dF) #calculate slope for dataset
 nSim <- 1000 # number of simulations 
 Xsim <- rep(NA, nSim) # will hold simulated slopes 
-
-Xobs <- getMetric(dF)
 
 # loop through to create 1000 simulated slopes for xSim vector
 for (i in seq_len(nSim)){
@@ -152,10 +134,10 @@ for (i in seq_len(nSim)){
 }
 
 # creating the list structure that we need for final function
-slopes <- list(Xobs, Xsim)
-getPVAL(slopes)
-
-
-
-plotRanTest(slopes)
+z1 <- list(Xobs,Xsim)
+getPVAL(z1)
+plotRanTest(z1)
 ```
+*How does the p-value compare for the standard test versus the p value you estimated from your randomization test?* 
+
+*If there are persistent differences in the p value of the standard test versus your randomization, what do you think is responsible for this difference?*
