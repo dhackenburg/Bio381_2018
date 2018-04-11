@@ -1,0 +1,27 @@
+---
+title: "Example Timevis"
+author: "Diana Hackenburg"
+date: "March 25, 2018"
+output: html_document
+---
+
+```{r, echo=FALSE}
+library(timevis)
+library(reshape2)
+
+
+timeEPAGrant <- data.frame(
+  id = 1:
+    group = c(rep("Aerosols",3) rep("Fish Tissue",3), "Stress","Historical Analysis", "Survey", "Storytelling", "Focus Groups")
+    content = c("Field Season", "Lab Analysis", "Writing", "Field Season", "Lab Analysis", "Writing", "Design Experiment,"  )
+    start = c()
+    end = c()
+MyData <- read.csv(file="timeline_data.csv", header=TRUE, sep=",")  
+MyDataFrame <- data.frame(MyData)
+MyDataFrame
+group <- c(MyDataFrame["group"],M
+group
+timevis(data=MyDataFrame, groups=groups)
+groups <- data.frame(group)
+colnames(MyDataFrame)
+```
