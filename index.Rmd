@@ -27,6 +27,7 @@ My name is Diana Hackenburg and I am a PhD student in the Rubenstein School at t
 * [Homework 9](Homework9.html)
 * [Homework 10](Homework10.html)
 * [Homework 11](Homework11.html)
+* [Homework 12](Homework12.html)
 
 
 

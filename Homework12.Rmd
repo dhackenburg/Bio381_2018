@@ -4,27 +4,62 @@ author: "Diana Hackenburg"
 date: "April 11, 2018"
 output: html_document
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+#Graphing with ggPlot
+```{r, warning=FALSE}
+# preliminaries
+library(ggplot2)
+library(ggthemes)
+library(patchwork)
+library(wesanderson)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+##Harmful Algal Blooms Survey Data
+```{r}
+#Read in data
+MyData <- read.csv(file="REU_data.csv", header=TRUE, sep=",")
 ```
 
-## Including Plots
+# Graphs!
+```{r}
+myColor <- c("#A6D854","#FC8D62","#8DA0CB")
 
-You can also embed plots, for example:
+#Relationship between respondent's average concern related to HABs and average behavioral intention to act
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+concern <- ggplot(data=MyData,mapping=aes(x=CONCERN.AVERAGE,y=BEHAVIOR.INTENTION.AVERAGE,color=TREATMENT)) + geom_point() + geom_smooth(method="lm",se=FALSE) + scale_color_manual(values=myColor)
+
+cbfinal <- concern + theme_classic() + labs(title="Relationship between Concern\n and Behavior",x="Average Concern",y="Average Behavioral Intention",color="Treatment")
+
+#Relationship between treatment and average behavioral intention
+behavioraverage <- ggplot(data=MyData,mapping=aes(x=TREATMENT,y=BEHAVIOR.INTENTION.AVERAGE,fill=TREATMENT)) + geom_boxplot()
+
+behaviorfinal <- behavioraverage + theme_classic() + scale_fill_manual(values=myColor)+labs(title="Average Behavioral Inention by\n Treatment",x="Treatment",y="Average Behavioral Intention",fill="Treatment")
+
+behaviorfinal
+
+#Relationship between treatment and average concern
+concernaverage <- ggplot(data=MyData,mapping=aes(x=TREATMENT,y=CONCERN.AVERAGE,fill=TREATMENT)) + geom_boxplot() + scale_fill_manual(values=myColor)+ labs(title="Average Concern by Treatment",x="Treatment",y="Average Concern",fill="Treatment")
+
+concernfinal <- concernaverage + theme_classic()
+
+concernfinal
+
+#Relationship between efficacy and average behavioral intention
+efficacy <- ggplot(data=MyData,mapping=aes(x=EFFICACY,y=BEHAVIOR.INTENTION.AVERAGE,color=TREATMENT)) + geom_point() + geom_smooth(method="lm",se=FALSE) + scale_color_manual(values=myColor)
+
+ebfinal <- efficacy + theme_classic() + labs(title="Relationship between Concern\n and Behavior",x="Average Concern",y="Average Behavioral Intention",color="Treatment")
+
+ebfinal #print
+#Not very exciting
+
+#Respondents by Age and Location
+ages <- ggplot(data=MyData,mapping=aes(x=AGE,fill=LOCATION)) + geom_histogram() + labs(title="Respondents by Age and Location",x="Age",y="Count",fill="Location")+scale_fill_manual(values=myColor)
+
+agesfinal <- ages + theme_bw()
+
+agesfinal #print
+
+(cbfinal | agesfinal)/(concernfinal | behaviorfinal)
+
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

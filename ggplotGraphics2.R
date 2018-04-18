@@ -1,5 +1,6 @@
 # ggplot graphics
 #5 April 2018
+
 #DMH
 
 # preliminaries
@@ -10,7 +11,6 @@ library(TeachingDemos)
 char2seed("10th Avenue Freeze-Out")
 d <- mpg
 str(d)
-
 #create 4 individual graphs
 
 #graph 1
@@ -139,3 +139,6 @@ m11 + facet_grid(.~class)
 # fitting with boxplots over a continuous variable
 m12 <- ggplot(data=mpg,mapping=aes(x=displ,y=cty)) + geom_boxplot()
 m12 + facet_grid(.~class)
+m13 <- ggplot(data=mpg,mapping=aes(x=displ,y=cty,group=drv,fill=drv)) + geom_boxplot()
+m13
+m13 + facet_grid(.~class)
