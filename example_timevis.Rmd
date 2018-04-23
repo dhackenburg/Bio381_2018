@@ -4,24 +4,74 @@ author: "Diana Hackenburg"
 date: "March 25, 2018"
 output: html_document
 ---
+##Install timevis
+##install.packages("devtools")
+##devtools::install_github("daattali/timevis")
+##Load timevis library
+##library(timevis)
 
 ```{r, echo=FALSE}
 library(timevis)
-library(reshape2)
+#Read in data
+timedata <- read.csv("timeline_example.csv", header=TRUE,sep=",")
+groups <- data.frame(
+  id=c("N","SP","NP","LP","TMDL"),
+  content=c("News","State Policy","National Policy","Local Policy","TMDL"),
+  style=c("background-color:lightblue;","background-color:plum;","background-color:pink;","background-color:khaki;","background-color:coral;"))
+timevisHAB <- timevis(timedata,groups=groups, showZoom=TRUE, zoomFactor= 0.5)
+timevisHAB
+
+#Create a simple data frame
+simpleTL <- data.frame(
+  id      = 1:4,  #every item must have a content and a start variable
+  content = c("Randomization Tests", "ggPlots",
+              "Homework 12", "Presentations 1"), #start has a specific formatting of year - 2-digit month - 2-digit date, if time use hour : minute : second using 24-hour clock
+  start   = c("2018-04-03", "2018-04-05",
+              "2018-04-11", "2018-04-24 14:50:00"), # single point in time? Use NA 
+  end     = c(NA, "2018-04-17",NA,NA)
+)
+simpleTL #print data frame
+
+#create first timeline
+timevis(simpleTL)
+
+#add groups
+groups <- data.frame( #create group dataframe
+  id = c("lec", "hw", "pt"),
+  content = c("Lecture", "Homework", "Presentation")
+)
+
+#bind groups to data frame
+groupTL <- cbind(simpleTL,group=c(rep("lec",2),"hw","pt"))
+
+#add groups to final timeline
+timevis(groupTL,groups=groups)
+
+# add item to timeline and html is supported
+timevis(groupTL,groups=groups)  %>%
+  addItem(list(id =5, content = "<b>Presentations 2</b>", start = "2018-04-25", group="pt")) 
+
+# add link to timeline item
+groupTL$content <- as.character(groupTL$content)
+groupTL[3,2] <- "<a href='https://gotellilab.github.io/Bio381/Homeworks/Homework12_2018.html'>Homework 12</a>"
+
+# Re-factorize with the as.factor function or simple factor(fixed$Type)
+groupTL$content <- as.factor(groupTL$content)
+timevis(groupTL,groups=groups)
 
 
-timeEPAGrant <- data.frame(
-  id = 1:
-    group = c(rep("Aerosols",3) rep("Fish Tissue",3), "Stress","Historical Analysis", "Survey", "Storytelling", "Focus Groups")
-    content = c("Field Season", "Lab Analysis", "Writing", "Field Season", "Lab Analysis", "Writing", "Design Experiment,"  )
-    start = c()
-    end = c()
-MyData <- read.csv(file="timeline_data.csv", header=TRUE, sep=",")  
-MyDataFrame <- data.frame(MyData)
-MyDataFrame
-group <- c(MyDataFrame["group"],M
-group
-timevis(data=MyDataFrame, groups=groups)
-groups <- data.frame(group)
-colnames(MyDataFrame)
+timevis(simpleTL)
+
+#show zoom, make items editable, and change height
+timevis(simpleTL, showZoom=FALSE,options = list(editable = TRUE, height = "200px"))
+
+#Add some style
+styles <- c("color:white; background-color:black;")
+styles
+simpleTL <- cbind(simpleTL,style=styles)
+simpleTL
+timevis(simpleTL)
+#?timevis()
+
+
 ```
