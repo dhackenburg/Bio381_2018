@@ -1,20 +1,17 @@
 ---
-title: "Bio 381"
+title: "Bio 381 - Computational Biology"
 author: "Diana Hackenburg"
 date: "January 17, 2018"
 output: 
-  prettydoc::html_pretty:
-    theme: architect
-    highlight: github
+   markdowntemplates::skeleton
 ---
 ## Welcome to my GitHub project website.
 
-<img src="Diana_pinecone.jpg" align="left" hspace="5"  width="230" height="140" />
-My name is Diana Hackenburg and I am a PhD student in the Rubenstein School at the University of Vermont. I study the connections between human well-being and nature, as well as communication, education and community action related to the environment, specifically algal blooms.
-[Check out my other website.](https://dianahackenburg.wordpress.com)
-
-
-#Presentation
+<img src="Diana_pinecone.jpg" align="left" hspace="8"  width="230" height="150" />
+My name is Diana Hackenburg and I am a PhD student in the Rubenstein School at the University of Vermont. I study the connections between human well-being and nature, as well as communication, education and community action related to the environment, specifically algal blooms. Before coming to Vermont, I worked as a science writer/editor with North Carolina Sea Grant, as well as with Triangle Land Conservancy, Virginia Department of Environmental Quality, and the Blue Ridge Land Conservancy. Check out [my other website](https://dianahackenburg.wordpress.com) or [email me](mailto:dhackenb@uvm.edu).
+<br>
+<br>
+<h2>Presentation</h2>
 My presentation will be on the [timevis](https://github.com/daattali/timevis) and [shiny](https://shiny.rstudio.com/) packages.
 
 * [Html for timevis package](example_timevis.html)
@@ -22,7 +19,7 @@ My presentation will be on the [timevis](https://github.com/daattali/timevis) an
 * [R script for shiny demo](exampleapp/app.R)
 
 
-#Homework
+##Homework
 * [Homework 2](Homework2_Flowchart.html)
 * [Homework 3](Homework3a.pdf)
 * [Homework 4](homework4.html)
@@ -35,7 +32,6 @@ My presentation will be on the [timevis](https://github.com/daattali/timevis) an
 * [Homework 12](Homework12.html)
 
 
-
-# Helpful Links
+##Helpful Links
 
 [Bio 381 website](https://gotellilab.github.io/Bio381)
