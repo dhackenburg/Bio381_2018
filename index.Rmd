@@ -4,7 +4,7 @@ author: "Diana Hackenburg"
 date: "January 17, 2018"
 output: 
   prettydoc::html_pretty:
-    theme: hpstr
+    theme: architect
     highlight: github
 ---
 ## Welcome to my GitHub project website.
