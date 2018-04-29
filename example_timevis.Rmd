@@ -1,7 +1,7 @@
 ---
-title: "Example Timevis"
+title: "Timevis Example"
 author: "Diana Hackenburg"
-date: "March 25, 2018"
+date: "April 29, 2018"
 output: html_document
 ---
 ##Install timevis
@@ -9,69 +9,124 @@ output: html_document
 ##devtools::install_github("daattali/timevis")
 ##Load timevis library
 ##library(timevis)
+##https://github.com/daattali/timevis
+##http://daattali.com/shiny/timevis-demo/
+##http://cran.r-project.org/web/packages/timevis
+
+
+
+##timevis lets you create fully interactive timeline visualizations. Timelines can be included in Shiny apps and R markdown documents, or viewed from the R console and RStudio Viewer.
+
 
 ```{r, echo=FALSE}
-library(timevis)
-#Read in data
-timedata <- read.csv("timeline_example.csv", header=TRUE,sep=",")
-groups <- data.frame(
-  id=c("N","SP","NP","LP","TMDL"),
-  content=c("News","State Policy","National Policy","Local Policy","TMDL"),
-  style=c("background-color:lightblue;","background-color:plum;","background-color:pink;","background-color:khaki;","background-color:coral;"))
-timevisHAB <- timevis(timedata,groups=groups, showZoom=TRUE, zoomFactor= 0.5)
-timevisHAB
+#timevis allows you to create interactive timeline visualizations in R
 
-#Create a simple data frame
+#Install timevis
+
+library(timevis)
+
+#Look at example timelines: http://daattali.com/shiny/timevis-demo/
+
+#Create a simple data frame with events from this class
+
+#every item must have a content and a start variable, id is optional but recommended
+#start has a specific formatting of year - 2-digit month - 2-digit date, if time use hour : minute : second using 24-hour clock
+
 simpleTL <- data.frame(
-  id      = 1:4,  #every item must have a content and a start variable
+  id = 1:4,  
+  #include 2 lectures, a homework, and the first day of presentations
   content = c("Randomization Tests", "ggPlots",
-              "Homework 12", "Presentations 1"), #start has a specific formatting of year - 2-digit month - 2-digit date, if time use hour : minute : second using 24-hour clock
-  start   = c("2018-04-03", "2018-04-05",
-              "2018-04-11", "2018-04-24 14:50:00"), # single point in time? Use NA 
+              "Homework 12", "Presentations 1"), 
+  start = c("2018-04-03", "2018-04-05", "2018-04-11", "2018-04-24 14:50:00"), 
+# single point in time? Use NA 
   end     = c(NA, "2018-04-17",NA,NA)
 )
-simpleTL #print data frame
+#print data frame
+simpleTL 
 
 #create first timeline
 timevis(simpleTL)
 
-#add groups
-groups <- data.frame( #create group dataframe
+#-----------------------------------------------
+#Add groups
+
+#Create a data frame to define your groups
+#Group id = used in data frame with timeline items
+#Group content = what will show on your timeline
+
+groups <- data.frame( 
   id = c("lec", "hw", "pt"),
   content = c("Lecture", "Homework", "Presentation")
 )
 
-#bind groups to data frame
+#Bind groups to data frame
 groupTL <- cbind(simpleTL,group=c(rep("lec",2),"hw","pt"))
 
-#add groups to final timeline
+#Add groups to final timeline
 timevis(groupTL,groups=groups)
 
-# add item to timeline and html is supported
-timevis(groupTL,groups=groups)  %>%
-  addItem(list(id =5, content = "<b>Presentations 2</b>", start = "2018-04-25", group="pt")) 
+#Add item to timeline
+#html is supported
+#Use "piping notation" to add onto the next command like with leaflet package!
 
-# add link to timeline item
+timevis(groupTL,groups=groups)  %>%
+  addItem(list(id=5, content="<b>Presentations 2</b>", start="2018-04-25", group="pt")) 
+
+#Add a hyperlink to a timeline item
+#Look at structure - variables are factors, need them as characters
+str(groupTL)
+
+#First change content from a factor to a character
 groupTL$content <- as.character(groupTL$content)
+
+#Then call the specific content cell
 groupTL[3,2] <- "<a href='https://gotellilab.github.io/Bio381/Homeworks/Homework12_2018.html'>Homework 12</a>"
 
-# Re-factorize with the as.factor function or simple factor(fixed$Type)
+# You can re-factorize with the as.factor function or leave as characters
 groupTL$content <- as.factor(groupTL$content)
 timevis(groupTL,groups=groups)
 
+#----------------------------------------------
+#Your timeline has options! 
+#Official timeline documentation: http://visjs.org/docs/timeline/#Configuration_Options
+#showZoom = TRUE/FALSE
+#Some things are options and must be included as a list
+#Make items editable
+#Timeline automatically resizes to window but can set height or width
 
-timevis(simpleTL)
-
-#show zoom, make items editable, and change height
-timevis(simpleTL, showZoom=FALSE,options = list(editable = TRUE, height = "200px"))
+timevis(simpleTL, showZoom=FALSE,options = list(editable = TRUE, width="500px",height = "200px"))
 
 #Add some style
 styles <- c("color:white; background-color:black;")
-styles
+#Styles associated with items or with groups
 simpleTL <- cbind(simpleTL,style=styles)
 simpleTL
 timevis(simpleTL)
-#?timevis()
 
+#-------------------------------------
+#Timeline with prepared data
+
+#Read in data
+timedata <- read.csv("timeline_example.csv", header=TRUE,sep=",")
+
+#Create the groups data frame
+groups <- data.frame(
+  id=c("N","SP","NP","LP","TMDL"),
+  content=c("News","State Policy","National Policy","Local Policy","TMDL"),
+  #add style to group
+  style=c("background-color:lightblue;","background-color:plum;","background-color:pink;","background-color:khaki;","background-color:coral;"))
+
+#Assign timeline to a vector
+#shortcut "alt" + "-" <- (Mac "Opt" + "-")
+#orientation of timeline axis
+timevisHAB <- timevis(timedata,groups=groups,options=list(selectable=TRUE,editable=TRUE,verticalScroll=TRUE,horizontalScroll=TRUE,moveable=TRUE,multiselect=TRUE,zoomCtrl=TRUE,maxHeight="500px",orientation="top"))
+timevisHAB
+#Select an item by clicking it, and use ctrl+click to or shift+click to select multiple items (when multiselect: true).
+#Move selected items by dragging them.
+#Create a new item by double tapping on an empty space
+#Create a new range item by dragging on an empty space with the ctrl key down.
+#Update an item by double tapping it.
+#Delete a selected item by clicking the delete button on the top right.
+#you can change the editability of each item by adding to it in the data frame editable:false
 
 ```

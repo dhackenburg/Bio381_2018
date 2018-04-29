@@ -1,0 +1,13 @@
+name: exampleapp
+title: exampleapp
+username:
+account: dhackenburg
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 333475
+bundleId: 1345897
+url: https://dhackenburg.shinyapps.io/exampleapp/
+when: 1525021621.18172
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: timeline_example.csv

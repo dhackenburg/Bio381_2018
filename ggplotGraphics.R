@@ -5,7 +5,9 @@
 # preliminaries
 library(ggplot2)
 library(ggthemes)
+install.packages("ggthemes")
 library(patchwork)
+install.packages("patchwork")
 library(TeachingDemos)
 char2seed("10th Avenue Freeze-Out")
 d <- mpg

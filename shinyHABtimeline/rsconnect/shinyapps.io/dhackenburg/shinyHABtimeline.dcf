@@ -1,0 +1,12 @@
+name: shinyHABtimeline
+title: shinyHABtimeline
+username:
+account: dhackenburg
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 332266
+bundleId: 1345891
+url: https://dhackenburg.shinyapps.io/shinyHABtimeline/
+when: 1525021342.61039
+asMultiple: FALSE
+asStatic: FALSE

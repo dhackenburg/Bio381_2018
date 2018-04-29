@@ -15,10 +15,11 @@ My name is Diana Hackenburg and I am a PhD student in the Rubenstein School at t
 
 
 #Presentation
-My presentation will be on the [timevis](https://github.com/daattali/timevis) package.
+My presentation will be on the [timevis](https://github.com/daattali/timevis) and [shiny](https://shiny.rstudio.com/) packages.
 
-* [Presentation file](example_timevis.html)
-
+* [Html for timevis package](example_timevis.html)
+* [Data file for timevis demo](timeline_example.csv)
+* [R script for shiny demo](exampleapp/app.R)
 
 
 #Homework

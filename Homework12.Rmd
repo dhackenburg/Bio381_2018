@@ -29,6 +29,8 @@ concern <- ggplot(data=MyData,mapping=aes(x=CONCERN.AVERAGE,y=BEHAVIOR.INTENTION
 
 cbfinal <- concern + theme_classic() + labs(title="Relationship between Concern\n and Behavior",x="Average Concern",y="Average Behavioral Intention",color="Treatment")
 
+cbfinal
+
 #Relationship between treatment and average behavioral intention
 behavioraverage <- ggplot(data=MyData,mapping=aes(x=TREATMENT,y=BEHAVIOR.INTENTION.AVERAGE,fill=TREATMENT)) + geom_boxplot()
 
