@@ -17,6 +17,7 @@ My presentation will be on the [timevis](https://github.com/daattali/timevis) an
 * [Html for timevis package](example_timevis.html)
 * [Data file for timevis demo](timeline_example.csv)
 * [R script for shiny demo](exampleapp/app.R)
+* Check out the [interactive timeline](https://dhackenburg.shinyapps.io/shinyHABtimeline/) I made using timevis and shiny!
 
 
 ##Homework
