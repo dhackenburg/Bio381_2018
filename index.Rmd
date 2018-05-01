@@ -5,7 +5,7 @@ date: "January 17, 2018"
 output: 
    markdowntemplates::skeleton
 ---
-## Welcome to my GitHub project website.
+## Welcome to my GitHub project website!
 
 <img src="Diana_pinecone.jpg" align="left" hspace="8"  width="230" height="150" />
 My name is Diana Hackenburg and I am a PhD student in the Rubenstein School at the University of Vermont. I study the connections between human well-being and nature, as well as communication, education and community action related to the environment, specifically algal blooms. Before coming to Vermont, I worked as a science writer/editor with North Carolina Sea Grant, as well as with Triangle Land Conservancy, Virginia Department of Environmental Quality, and the Blue Ridge Land Conservancy. Check out [my other website](https://dianahackenburg.wordpress.com) or [email me](mailto:dhackenb@uvm.edu).
@@ -14,7 +14,8 @@ My name is Diana Hackenburg and I am a PhD student in the Rubenstein School at t
 <h2>Presentation</h2>
 My presentation will be on the [timevis](https://github.com/daattali/timevis) and [shiny](https://shiny.rstudio.com/) packages.
 
-* [Html for timevis package](example_timevis.html)
+* [Presentation RMD](presentation.Rmd)
+* [Presentation html](presentation.html)
 * [Data file for timevis demo](timeline_example.csv)
 * [R script for shiny demo](exampleapp/app.R)
 * Check out the [interactive timeline](https://dhackenburg.shinyapps.io/shinyHABtimeline/) I made using timevis and shiny!
