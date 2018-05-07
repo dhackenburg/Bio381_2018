@@ -1,6 +1,9 @@
 Diana Hackenburg
+&nbsp;
 Homework #2
+&nbsp;
 January 24, 2018 (updated 5/7/2018)
+
 ***
 **Assignment:** Use Typora to create diagrams that explain the main hypotheses and/or mechanisms we will address with our thesis projects.  Add Markdown titles, formatting, and text, and develop a narrative to explain each figure the hypotheses they elaborate, and the expected outcomes of your experiments and observations. If you hit a wall in developing your hypotheses, try to write some text explaining what the issues are.
 
