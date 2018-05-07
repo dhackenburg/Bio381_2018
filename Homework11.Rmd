@@ -5,15 +5,20 @@ date: "April 4, 2018"
 output: html_document
 ---
 
+***
+
+##Assignment: Function plotting and randomization tests
+
+***
+###Preliminaries
 ```{r}
 # Preliminaries
 library(ggplot2)
 library(TeachingDemos)
 char2seed("Cruel April")
 ```
-#Function plotting and randomization tests
 
-##Setting up the functions
+###Setting up the functions
 ```{r}
 # FUNCTION: readData
 # read in or generate data frame 
@@ -98,7 +103,7 @@ plotRanTest <-function(z=NULL){
 
 ```
 
-##Main Body of Code
+###Main Body of Code
 ```{r}
 nSim <- 1000 # number of simulations 
 Xsim <- rep(NA, nSim) # will hold simulated slopes 
@@ -117,12 +122,15 @@ getPVAL(slopes)
 plotRanTest(slopes)
 ```
 
-# Randomization Test with Real Data
+***
+
+### Randomization Test with Real Data
 Here, I am applying the randomization test to survey data looking at people's concern for the environment related to their intentions to do pro-environmental behaviors. 
 ```{r}
 # Read CSV into R
 MyData <- read.csv(file="Concern_behavior.csv", header=TRUE, sep=",")  
 head(MyData)
+str(MyData)
 dF<-cbind(ID=seq_along(MyData),MyData)
 Xobs <- getMetric(dF) #calculate slope for dataset
 nSim <- 1000 # number of simulations 
@@ -138,6 +146,9 @@ z1 <- list(Xobs,Xsim)
 getPVAL(z1)
 plotRanTest(z1)
 ```
+
 *How does the p-value compare for the standard test versus the p value you estimated from your randomization test?* 
+They are quite different.
 
 *If there are persistent differences in the p value of the standard test versus your randomization, what do you think is responsible for this difference?*
+I used a simple linear model, where in reality, behavioral intention is not a simple function of concern. Also, I have a fairly low number of real observations (n=84).

@@ -1,10 +1,19 @@
 ---
-title: "Homework12"
+title: "Homework 12"
 author: "Diana Hackenburg"
 date: "April 11, 2018"
 output: html_document
 ---
-#Graphing with ggPlot
+
+***
+
+##Assignment: Graphing with ggPlot
+For this week in lab, use your newly-developed ggplot chops to create some nice graphs from your own data (If you do not have a good data frame to use for graphics, use one of the many built-in data frames from R (other than mpg, which we are using in class)). Experiment with different themes, theme base sizes, aesthetics, mappings, and faceting. When you are finished, try exporting them to high quality pdfs, jpgs, eps files, or other formats that you would use for submission to a journal.
+
+***
+
+###Preliminaries
+
 ```{r, warning=FALSE}
 # preliminaries
 library(ggplot2)
@@ -13,13 +22,13 @@ library(patchwork)
 library(wesanderson)
 ```
 
-##Harmful Algal Blooms Survey Data
+###Harmful Algal Blooms Survey Data
 ```{r}
 #Read in data
 MyData <- read.csv(file="REU_data.csv", header=TRUE, sep=",")
 ```
 
-# Graphs!
+###Graphs!
 ```{r}
 myColor <- c("#A6D854","#FC8D62","#8DA0CB")
 
@@ -34,7 +43,7 @@ cbfinal
 #Relationship between treatment and average behavioral intention
 behavioraverage <- ggplot(data=MyData,mapping=aes(x=TREATMENT,y=BEHAVIOR.INTENTION.AVERAGE,fill=TREATMENT)) + geom_boxplot()
 
-behaviorfinal <- behavioraverage + theme_classic() + scale_fill_manual(values=myColor)+labs(title="Average Behavioral Inention by\n Treatment",x="Treatment",y="Average Behavioral Intention",fill="Treatment")
+behaviorfinal <- behavioraverage + theme_classic() + scale_fill_manual(values=myColor)+labs(title="Average Behavioral Intention by\n Treatment",x="Treatment",y="Average Behavioral Intention",fill="Treatment")
 
 behaviorfinal
 
