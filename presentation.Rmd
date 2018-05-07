@@ -82,8 +82,8 @@ groupTL <- cbind(simpleTL,group=c(rep("lec",2),"hw","pt"))
 timevis(groupTL,groups=groups)
 
 #Add item to timeline
-#html is supported
 #Use "piping notation" to add onto the next command like with leaflet package!
+#html is supported
 
 timevis(groupTL,groups=groups)  %>%
   addItem(list(id=5, content="<b>Presentations 2</b>", start="2018-04-25", group="pt")) 
@@ -135,7 +135,7 @@ groups <- data.frame(
   style=c("background-color:lightblue;","background-color:plum;","background-color:pink;","background-color:khaki;","background-color:coral;"))
 
 #Assign timeline to a vector
-#shortcut "alt" + "-" <- (Mac "Opt" + "-")
+#shortcut assignment operator "alt" + "-" <- (Mac "Opt" + "-")
 #orientation of timeline axis
 timevisHAB <- timevis(timedata,groups=groups,options=list(selectable=TRUE,editable=TRUE,verticalScroll=TRUE,horizontalScroll=TRUE,moveable=TRUE,multiselect=TRUE,zoomCtrl=TRUE,maxHeight="500px",orientation="top"))
 timevisHAB
@@ -202,6 +202,7 @@ ui <- fluidPage(
       h3("Choose Your Inputs"),
       
       #Create widgets for choosing inputs
+      #Each widget starts with the server name followed by the label used in the ui, and any widget specific initial values go at the end
       selectInput("mpgtype","MPG Standard",c("Highway"="hwy","City"="city")),
       selectInput("variable","Variable:",c("Manufacturer"="manufacturer","Year"="year","Fuel Type"="fl","Class"="class"))),
     
@@ -224,8 +225,13 @@ server <- function(input,output){
   #A render expression acts as a function 
   output$caption <- renderText({formulaText()})
   output$mpgPlot <- renderPlot({
+    #fix margins using parameters
     par(mar=c(6,6,0,0))
+    #pch sets point type for outliers
+    #las sets axis label orientation
     boxplot(as.formula(formulaText()), data=d,las=2,col=brewer.pal(n=8,name="Set2"),pch=19,xlab="",ylab="")
+    #side 1= bottom, side 2=left
+    #font=2 is bold
     mtext(input$variable,side=1,line=5,font=2)
     mtext(c("(mpg)",input$mpgtype),side=2,line=3:4,font=2)
 })

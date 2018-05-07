@@ -40,8 +40,13 @@ ui <- fluidPage(
       h3("Choose Your Inputs"),
       
       #Choose inputs
-      selectInput("mpgtype","MPG Standard",c("Highway"="hwy","City"="city")),
-      selectInput("variable","Variable:",c("Manufacturer"="manufacturer","Year"="year","Fuel Type"="fl","Class"="class"))),
+      selectInput("mpgtype","MPG Standard",
+                  c("Highway"="hwy","City"="cty")),
+      selectInput("variable","Variable:",
+                  c("Manufacturer"="manufacturer",
+                    "Year"="year",
+                    "Fuel Type"="fl",
+                    "Class"="class"))),
     
     #Main panel for displaying outputs
     mainPanel(
