@@ -1,7 +1,6 @@
-<p>Diana Hackenburg
+##Homework 2
 
-<br>
-Homework #2
+<p>Diana Hackenburg
 
 <br>
 January 24, 2018 (updated 5/7/2018)</p>
