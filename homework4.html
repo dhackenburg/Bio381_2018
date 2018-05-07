@@ -125,8 +125,8 @@ $(document).ready(function () {
 </div>
 
 
-<div id="homework-4" class="section level2">
-<h2>Homework 4</h2>
+<p>Solve these problems, some of which are adapted from:<br />
+<em>Jones, O., R. Maillardet, and A. Robinson. 2009. Scientific Programming and Simulation Using R. CRC Press, Boca Raton.</em></p>
 <p>1.Suppose x = 1.1, a = 2.2, and b = 3.3. Assign each expression to the value of the variable z and print the value stored in z.</p>
 <pre class="r"><code>x&lt;-1.1
 a&lt;-2.2
@@ -151,7 +151,9 @@ floor(z %% floor(z)*10)</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Using the rep and seq functions, create the following vectors:</li>
 </ol>
-<p>a.(1,2,3,4,5,6,7,8,7,6,5,4,3,2,1) b.(1,2,2,3,3,3,4,4,4,4,5,5,5,5,5) c.(5,4,4,3,3,3,2,2,2,2,1,1,1,1,1)</p>
+<p>a.(1,2,3,4,5,6,7,8,7,6,5,4,3,2,1)<br />
+b.(1,2,2,3,3,3,4,4,4,4,5,5,5,5,5)<br />
+c.(5,4,4,3,3,3,2,2,2,2,1,1,1,1,1)</p>
 <pre class="r"><code>#a
 a&lt;- c(seq(1:8), seq(from=7, to=1))
 print(a)</code></pre>
@@ -169,24 +171,25 @@ print(z)</code></pre>
 print(c)</code></pre>
 <pre><code>##  [1] 5 4 4 3 3 3 2 2 2 2 1 1 1 1 1</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>Create a vector of two random uniform numbers. In a spatial map, these can be interpreted as x and y coordinates that give the location of an individual (such as a marked forest tree in a plot that has been mapped). Using one of R’s inverse trigonometry functions (asin(), acos(), or atan()), convert these numbers into polar coordinates (If you don’t know what polar coordinates are, read about them on the web or in your calculus textbook).</li>
+<li>Create a vector of two random uniform numbers. In a spatial map, these can be interpreted as x and y coordinates that give the location of an individual (such as a marked forest tree in a plot that has been mapped). Using one of R’s inverse trigonometry functions (asin(), acos(), or atan()), convert these numbers into polar coordinates. <em>(If you don’t know what polar coordinates are, read about them on the web or in your calculus textbook).</em></li>
 </ol>
 <pre class="r"><code>z&lt;-runif(2)
 print(z)</code></pre>
-<pre><code>## [1] 0.2260132 0.4143068</code></pre>
+<pre><code>## [1] 0.4126755 0.8693119</code></pre>
 <pre class="r"><code># r = (x^2+y^2)^(1/2)
 # \theta = arctan(y/x)
 r&lt;-(z[1]^2+z[2]^2)^(1/2)
 theta&lt;-(atan(z[2]/z[1]))
 polarcoords&lt;-c(r,theta)
 print(polarcoords)</code></pre>
-<pre><code>## [1] 0.471945 1.071398</code></pre>
+<pre><code>## [1] 0.9622911 1.1275805</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>Suppose that queue &lt;- c(“sheep”, “fox”, “owl”, “ant”) and that queue represents the animals that are lined up to enter Noah’s Ark, with the sheep at the front of the line. Using R expressions, update the queue successively as</li>
+<li>Suppose that queue &lt;- c(“sheep”, “fox”, “owl”, “ant”) and that queue represents the animals that are lined up to enter Noah’s Ark, with the sheep at the front of the line.</li>
 </ol>
 <pre class="r"><code>queue&lt;-c(&quot;sheep&quot;,&quot;fox&quot;,&quot;owl&quot;,&quot;ant&quot;)
 print(queue)</code></pre>
 <pre><code>## [1] &quot;sheep&quot; &quot;fox&quot;   &quot;owl&quot;   &quot;ant&quot;</code></pre>
+<p>Using R expressions, update the queue successively as:</p>
 <pre class="r"><code>#a. the serpent arrives;
 length(queue)</code></pre>
 <pre><code>## [1] 4</code></pre>
@@ -232,7 +235,7 @@ v[!v%%2==0 &amp; !v%%3==0 &amp; !v%%7==0]</code></pre>
 
 proportion&lt;-c(mean(z&lt;0.10),mean(z&gt;0.90),mean(z&gt;0.45 &amp; z&lt;0.55))
 print(proportion)</code></pre>
-<pre><code>## [1] 0.117 0.119 0.111</code></pre>
+<pre><code>## [1] 0.107 0.105 0.102</code></pre>
 <pre class="r"><code># b.Making successive copies of z, transform your vector of uniform numbers in the following ways &amp;  for each case calculate your vector of 3 numbers to get the new proportions.
 set.seed(1)  
 #log (base 10) of z
@@ -244,18 +247,17 @@ print(proportion)</code></pre>
 zsquare&lt;-z^2
 proportion&lt;-c(mean(zsquare&lt;0.10),mean(zsquare&gt;0.90),mean(zsquare&gt;0.45 &amp; z&lt;0.55))
 print(proportion)</code></pre>
-<pre><code>## [1] 0.308 0.070 0.000</code></pre>
+<pre><code>## [1] 0.306 0.058 0.000</code></pre>
 <pre class="r"><code>#e^z
 expz&lt;-exp(z)
 proportion&lt;-c(mean(expz&lt;0.10),mean(expz&gt;0.90),mean(expz&gt;0.45 &amp; z&lt;0.55))
 print(proportion)</code></pre>
-<pre><code>## [1] 0.000 1.000 0.527</code></pre>
+<pre><code>## [1] 0.000 1.000 0.542</code></pre>
 <pre class="r"><code>#square root of z
 sqrtz&lt;-sqrt(z)
 proportion&lt;-c(mean(sqrtz&lt;0.10),mean(sqrtz&gt;0.90),mean(sqrtz&gt;0.45 &amp; z&lt;0.55))
 print(proportion)</code></pre>
-<pre><code>## [1] 0.011 0.204 0.319</code></pre>
-</div>
+<pre><code>## [1] 0.007 0.195 0.336</code></pre>
 
 
 

@@ -4,7 +4,9 @@ author: "Diana Hackenburg"
 date: "February 7, 2018"
 output: html_document
 ---
-## Homework 4
+Solve these problems, some of which are adapted from:\
+_Jones, O., R. Maillardet, and A. Robinson. 2009. Scientific Programming and Simulation Using R. CRC Press, Boca Raton._
+
 1.Suppose x = 1.1, a = 2.2, and b = 3.3. Assign each expression to the value of the variable z and print the value stored in z.
 
 
@@ -28,8 +30,8 @@ print(z)
 
 2. Using the rep and seq functions, create the following vectors:
 
-a.(1,2,3,4,5,6,7,8,7,6,5,4,3,2,1)
-b.(1,2,2,3,3,3,4,4,4,4,5,5,5,5,5)
+a.(1,2,3,4,5,6,7,8,7,6,5,4,3,2,1)\
+b.(1,2,2,3,3,3,4,4,4,4,5,5,5,5,5)\
 c.(5,4,4,3,3,3,2,2,2,2,1,1,1,1,1)
 ```{r}
 #a
@@ -46,7 +48,7 @@ c<-rep(x=z,times=rev(z))
 print(c)
 
 ```
-3. Create a vector of two random uniform numbers. In a spatial map, these can be interpreted as x and y coordinates that give the location of an individual (such as a marked forest tree in a plot that has been mapped). Using one of R's inverse trigonometry functions (asin(), acos(), or atan()), convert these numbers into polar coordinates (If you don't know what polar coordinates are, read about them on the web or in your calculus textbook).
+3. Create a vector of two random uniform numbers. In a spatial map, these can be interpreted as x and y coordinates that give the location of an individual (such as a marked forest tree in a plot that has been mapped). Using one of R's inverse trigonometry functions (asin(), acos(), or atan()), convert these numbers into polar coordinates. _(If you don't know what polar coordinates are, read about them on the web or in your calculus textbook)._
 ```{r}
 z<-runif(2)
 print(z)
@@ -57,12 +59,13 @@ theta<-(atan(z[2]/z[1]))
 polarcoords<-c(r,theta)
 print(polarcoords)
 ```
-4. Suppose that queue <- c("sheep", "fox", "owl", "ant") and that queue represents the animals that are lined up to enter Noah's Ark, with the sheep at the front of the line. Using R expressions, update the queue successively as
-
+4. Suppose that queue <- c("sheep", "fox", "owl", "ant") and that queue represents the animals that are lined up to enter Noah's Ark, with the sheep at the front of the line. 
 ```{r}
 queue<-c("sheep","fox","owl","ant")
 print(queue)
-
+```
+Using R expressions, update the queue successively as:
+```{r}
 #a. the serpent arrives;
 length(queue)
 queue[5]<-c("serpent")

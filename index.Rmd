@@ -22,18 +22,19 @@ My presentation will be on the [timevis](https://github.com/daattali/timevis) an
 
 
 ##Homework
-* [Homework 2](Homework2.html)
-* [Homework 3](Homework3a.pdf)
-* [Homework 4](homework4.html)
-* [Homework 5](Homework5.html)
-* [Homework 6](Homework6.html)
-* [Homework 7/8](Homework7b.html)
-* [Homework 9](Homework9.html)
-* [Homework 10](Homework10.html)
-* [Homework 11](Homework11.html)
-* [Homework 12](Homework12.html)
+* [Homework 2](Homework2.html) - Building flowcharts and other diagrams in Typora
+* [Homework 3](Homework3a.pdf) - Creating a Beamer presentation
+* [Homework 4](homework4.html) - Scientific programming and simulation using R 
+* [Homework 5](Homework5.html) - Working with regular expressions
+* [Homework 6](Homework6.html) - Simulating and fitting data distributions
+* [Homework 7/8](Homework7b.html) - Creating fake datasets to explore hypotheses
+* [Homework 9](Homework9.html) - Organizing code with structured programming
+* [Homework 10](Homework10.html) - Batch processing
+* [Homework 11](Homework11.html) - Function plotting and randomization tests
+* [Homework 12](Homework12.html) - ggPlots
 
 
 ##Helpful Links
 
-[Bio 381 website](https://gotellilab.github.io/Bio381)
+[Bio 381 website](https://gotellilab.github.io/Bio381)\
+[Cheat sheets & programming resources](https://gotellilab.github.io/Bio381/CheatSheets/CheatSheets.html)
