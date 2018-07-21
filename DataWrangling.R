@@ -39,9 +39,10 @@ aFrame
 str(.)
 .$Abundance <- as.numeric(.$Abundance)
 aFrameL <- .
+aFrameL
 
 # now able to do a bar plot with this
-ggplot(aFrameL,aes(x=Sites,y=Abundance,fill=Species)) + geom_bar(position="dodge",stat="identity",color="black")
+ggplot(aFrameL,aes(x=Site,y=Abundance,fill=Species)) + geom_bar(position="dodge",stat="identity",color="black")
 
 # build a subject x time experimental matrix
 Treatment <- rep(c("Control","Treatment"),each=5)
